@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        currentUser: 'Anonymous',
+        currentUser: {name: "Anonymous" },
         messages: [],
         notification: "",
         numberOfOnlineUsers: 0
@@ -16,14 +16,14 @@ class App extends Component {
   }
 
   handleSendMessage = (newMessage) => {
-    if (newMessage.username !== this.state.currentUser) {
+    if (newMessage.username !== this.state.currentUser.name) {
       const newNotification = {
         type: "postNotification",
         content: `${this.state.currentUser.name} changed their name to ${newMessage.username}`
       };
       this.ws.send(JSON.stringify(newNotification));
-      this.setState({currentUser: {name: newMessage.username}});
     }
+    this.setState({currentUser: {name: newMessage.username}});
     newMessage.type = "postMessage";
     this.ws.send(JSON.stringify(newMessage));
   };
@@ -33,8 +33,8 @@ class App extends Component {
       const newMessage = JSON.parse(event.data);
       switch (newMessage.type) {
         case "incomingMessage":
-          this.state.messages.push(newMessage);
-          this.setState({messages: this.state.messages});
+          const messages = this.state.messages.concat(newMessage);
+          this.setState({messages});
           break;
         case "incomingNotification": 
           this.setState({notification: newMessage.content});
@@ -54,10 +54,10 @@ class App extends Component {
         <span className="numberOfUsers">{this.state.numberOfOnlineUsers} User(s) Connected</span>
         <MessageList 
           messages={this.state.messages}
-          notification={this.state.notifiation}/>
+          notification={this.state.notification}/>
         <ChatBar
           handleSendMessage={this.handleSendMessage}
-          currentUser={this.state.currentUser} />
+          currentUser={this.state.currentUser.name} />
       </div>
     );
   }

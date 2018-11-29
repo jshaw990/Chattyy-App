@@ -46,15 +46,14 @@ wss.on('connection', (ws) => {
       case "postMessage":
         newMessage.id = uuid(); 
         newMessage.type = "incomingMessage";
-        wss.broadcast(JSON.stringify(newMessage));
-        console.log(newMessage);
+        wss.broadcast(JSON.stringify(newMessage), ws);
         break;
       case "postNotification":
         const newNotification = {
           type: "incomingNotification",
           content: newMessage.content
         };
-        wss.broadcast(JSON.stringify(newNotification));
+        wss.broadcast(JSON.stringify(newNotification), ws);
         break; 
       default: 
         throw new Error("Unknown Type: " + newMessage.type);
