@@ -1,3 +1,4 @@
+{/* Required Extensions */}
 import React, {Component} from 'react';
 import App from './App.jsx';
 
@@ -11,15 +12,18 @@ class ChatBar extends React.Component {
     }
 
     handleOnUsername(event) {
+        {/* Change of Username */}
         const usernameOld = this.state.username
         this.setState({username: event.target.value})
     };
 
     handleOnContent(event) {
+        {/* Message Content  */}
         this.setState({content: event.target.value})
     };
 
     handleOnEnter(event) {
+        {/* Send Content when Enter is pressed */}
         if (event.key === "Enter") {
             this.props.handleSendMessage(this.state);
             this.setState({content:''});
@@ -27,6 +31,7 @@ class ChatBar extends React.Component {
     };
 
     render() {
+        {/* ChatBar Elements */}
         return (
             <footer className="chatbar">
                 <input 

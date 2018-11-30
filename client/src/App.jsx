@@ -1,3 +1,4 @@
+{/* Required Extensions */}
 import React, { Component } from 'react';
 import ChatBar from './ChatBar.jsx';
 import Message from './Message.jsx';
@@ -16,6 +17,7 @@ class App extends Component {
   }
 
   handleSendMessage = (newMessage) => {
+    {/* Send Message from ChatBar.jsx to App.jsx */}
     if (newMessage.username !== this.state.currentUser.name) {
       const newNotification = {
         type: "postNotification",
@@ -29,6 +31,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    {/* Notifications, Online Users, and Messages upon Component load */}
     this.ws.onmessage = (event) => {
       const newMessage = JSON.parse(event.data);
       switch (newMessage.type) {
@@ -49,6 +52,7 @@ class App extends Component {
   }
 
   render() {
+      {/* Render Nav, Messages, Notifications, and the Chat Bar */}
     return (
       <div>
         <nav className="navbar">      
