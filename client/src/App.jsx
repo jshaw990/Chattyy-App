@@ -51,7 +51,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <span className="numberOfUsers">{this.state.numberOfOnlineUsers} User(s) Connected</span>
+        <nav className="navbar">      
+        <a href="/" className="navbar-brand">Chatty</a>
+          <span className="numberOfUsers">{this.state.numberOfOnlineUsers} User(s) Connected</span>
+        </nav>
         <MessageList 
           messages={this.state.messages}
           notification={this.state.notification}/>
