@@ -34,3 +34,6 @@ npm run lint
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+
+### Creator's Notes: 
+* Additional Git Commit Messages can be found [here](https://github.com/jshaw990/Chatty-App-OLD)
