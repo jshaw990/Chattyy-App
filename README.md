@@ -5,12 +5,7 @@ A realtime chat application utilizing React, Babel, SCSS, and WebSockets.
 
 ### Screenshots
 
-![]()
-
-![]()
-
-![]()
-
+![Chatty_App](https://github.com/jshaw990/Chattyy-App/blob/master/Screenshots/Chatty_App.png?raw=true)
 
 ### Usage
 
